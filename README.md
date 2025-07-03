@@ -31,5 +31,5 @@ This app simulates a gossip network where users can share gossips, like, comment
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Mi-kode/the_gossip_project_v2.git
-cd the_gossip_project_v2
+git clone https://github.com/Mi-kode/the_gossip_project.git
+cd the_gossip_project
