@@ -1,6 +1,18 @@
 /* Balises */
 
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 0;
+}
 
+form {
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* Class */
 
@@ -9,7 +21,7 @@
 }
 
 .nav-item:hover {
-    background-color: lightgray;
+    background-color: rgb(223, 54, 54);
     font-weight: bolder;
 }
 
@@ -25,13 +37,33 @@ nav .container-fluid {
     margin-right: 0px;
 }
 
-.btn.btn-secondary {
-    border-color: rgb(156, 156, 156);
-    background-color: rgb(156, 156, 156);
-}
-
 .btn a {
     font-weight: 500;
     text-decoration: none;
-    color: white;
 }
+
+.title.form-control {
+    width: 350px;
+    margin: 1% 0;
+}
+
+.content.form-control {
+    width: 350px;
+    margin: 1% 0;
+    height: 250px;
+}
+
+.btn.btn-danger {
+    margin: 1% 0;
+}
+
+.bg-light {
+    --bs-light-rgb: 255, 150, 150;
+}
+
+/* .change.col {
+    --bs-gutter-y: 1.5rem;
+    margin-top: calc(0 * var(--bs-gutter-y));
+    margin-right: calc(1 * var(--bs-gutter-x));
+    margin-left: calc(2 * var(--bs-gutter-x));
+} */

@@ -1,10 +1,15 @@
 <h1>Bienvenue dans The Gossip Project</h1>
-<% @gossips.each do |gossip| %>
-    <div class="card mb-2">
-        <div class="card-body">
-            <h5><%= gossip.title %></h5>
-            <p>Auteur : <%= gossip.user.first_name %></p>
-            <%= link_to 'Voir plus', gossip_path(gossip), class: 'btn btn-secondary' %>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <% @gossips.each do |gossip| %>
+        <div class="change col">
+            <div class="card">
+                <div class="card-body">
+                    <h5><%= gossip.title %></h5>
+                    <p>Auteur : <%= gossip.user.first_name %></p>
+                    <%= link_to 'Voir plus', gossip_path(gossip), class: 'btn btn-danger' %>
+                </div>
+            </div>
         </div>
-    </div>
-<% end %>
+    <% end %>
+</div>
