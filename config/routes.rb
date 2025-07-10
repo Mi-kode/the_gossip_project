@@ -18,4 +18,9 @@ Rails.application.routes.draw do
 
   # Cities
   resources :cities, only: [ :show ]
+
+  # Comments
+  resources :gossips do
+    resources :comments
+  end
 end

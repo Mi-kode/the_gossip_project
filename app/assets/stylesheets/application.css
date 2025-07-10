@@ -15,7 +15,6 @@ h4 {
 }
 
 form {
-    margin-left: 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,4 +65,27 @@ nav .container-fluid {
 
 .bg-light {
     --bs-light-rgb: 255, 150, 150;
+}
+
+.home-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-div {
+    width: 50%;
+}
+
+.right-div {
+    width: 50%;
+}
+
+.two-button {
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+}
+
+.delete-button {
+    width: auto;
 }

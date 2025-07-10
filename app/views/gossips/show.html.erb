@@ -1,6 +1,27 @@
-<h1><%= @gossip.title %></h1>
-<p><%= @gossip.content %></p>
-<p>De <%= @gossip.user.first_name %> (<%= link_to @gossip.user.city.name, city_path(@gossip.user.city) %>)</p>
-<p>Créé à : <%= @gossip.created_at.strftime("%d %B %Y") %></p>
-<p><%= link_to "En savoir plus sur l'auteur", user_path(@gossip.user), class: 'btn btn-danger' %></p>
-<%= button_to "Supprimer ce potin", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-secondary" %>
+<div style="display: flex; flex-direction: column; flex-wrap: wrap; align-items: center;">
+    <h1><%= @gossip.title %></h1>
+    <p><%= @gossip.content %></p>
+    <% @comments.each do |comment| %>
+        <div class="col">
+            <div class="card">
+                <div class="card-body home-button">
+                    <h5><%= comment.content %></h5>
+                    <p>Auteur : <%= comment.user.first_name %></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    <%= form_tag(gossip_comments_path(@gossip)) do %>
+        <div class="mb-2">
+            <%= label_tag(:content, "Commentaire", class: 'form-label') %><br>
+            <%= text_area_tag(:content, nil,  placeholder: "Lâche du lourd !",class: 'content form-control') %>
+        </div>
+        <div>
+            <%= submit_tag("Envoyer", class: 'btn btn-success') %>
+        </div>
+    <% end %>
+    <p>De <%= @gossip.user.first_name %> (<%= link_to @gossip.user.city.name, city_path(@gossip.user.city) %>)</p>
+    <p>Créé à : <%= @gossip.created_at.strftime("%d %B %Y") %></p>
+    <p><%= link_to "En savoir plus sur l'auteur", user_path(@gossip.user), class: 'btn btn-danger' %></p>
+    <%= button_to "Supprimer ce potin", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-secondary delete-button" %>
+</div>
