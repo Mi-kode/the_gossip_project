@@ -1,0 +1,14 @@
+<h1>Modifier le Gossip</h1>
+
+<%= form_tag(gossip_path(@gossip), method: :patch) do %>
+    <div class="mb-2">
+        <%= label_tag('gossip[title]', "Titre du gossip", class: 'form-label') %>
+        <%= text_field_tag('gossip[title]', @gossip.title, class: 'title form-control') %>
+    </div>
+    <div class="mb-2">
+        <%= label_tag('gossip[content]', "Contenu du gossip", class: 'form-label') %>
+        <%= text_area_tag('gossip[content]', @gossip.content, class: 'content form-control') %>
+    </div>
+    <%= submit_tag("Mettre à jour", class: 'btn btn-primary') %>
+<% end %>
+

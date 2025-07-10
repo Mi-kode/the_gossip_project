@@ -7,8 +7,12 @@ class GossipsController < ApplicationController
     @gossip = Gossip.new
   end
 
+  def edit
+    @gossip = Gossip.find(params[:id])
+  end
+
   def create
-    anonymous = User.find_by(first_name: 'anonymous')
+    anonymous = User.find_by(first_name: "anonymous")
     @gossip = Gossip.new(
       title: params[:title],
       content: params[:content],
@@ -25,11 +29,17 @@ class GossipsController < ApplicationController
   end
 
   def update
-    @model = Model.find(params[:id])
-    if @model.update(tes_params)
-      redirect_to @model
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(gossip_params)
+      redirect_to gossip_path(@gossip), notice: "Gossip successfully updated!"
     else
       render :edit
     end
+  end
+
+  private
+
+  def gossip_params
+    params.require(:gossip).permit(:title, :content)
   end
 end

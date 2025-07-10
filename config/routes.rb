@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/welcome/:first_name", to: "static_pages#welcome"
 
   # Gossips
-  resources :gossips, only: [ :new, :create, :show ]
+  resources :gossips
 
   # Users
   resources :users, only: [ :show ]
