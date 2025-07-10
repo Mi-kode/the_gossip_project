@@ -11,6 +11,11 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
   end
 
+  def index
+    @gossips = Gossip.all
+  end
+
+
   def create
     anonymous = User.find_by(first_name: "anonymous")
     @gossip = Gossip.new(
@@ -35,6 +40,12 @@ class GossipsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to root_path, notice: "Le potin a bien été supprimé."
   end
 
   private

@@ -3,3 +3,4 @@
 <p>De <%= @gossip.user.first_name %> (<%= link_to @gossip.user.city.name, city_path(@gossip.user.city) %>)</p>
 <p>Créé à : <%= @gossip.created_at.strftime("%d %B %Y") %></p>
 <p><%= link_to "En savoir plus sur l'auteur", user_path(@gossip.user), class: 'btn btn-danger' %></p>
+<%= button_to "Supprimer ce potin", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-secondary" %>
