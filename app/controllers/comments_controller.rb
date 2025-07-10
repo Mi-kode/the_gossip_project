@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
     @comments = @gossip.comments
   end
 
-
   def create
     @gossip = Gossip.find(params[:gossip_id])
     anonymous = User.find_by(first_name: "anonymous")
@@ -22,12 +21,23 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = @gossip.comments.find(params[:id])
   end
 
   def update
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = @gossip.comments.find(params[:id])
+    if @comment.update(comment_params)
+      redirect_to gossip_path(@gossip), notice: "Commentaire modifié"
+    end
   end
 
   def destroy
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = @gossip.comments.find(params[:id])
+    @comment.destroy
+    redirect_to gossip_path(@gossip), notice: "Commentaire supprimé !"
   end
 
   private

@@ -37,7 +37,7 @@ class GossipsController < ApplicationController
   def update
     @gossip = Gossip.find(params[:id])
     if @gossip.update(gossip_params)
-      redirect_to gossip_path(@gossip), notice: "Gossip successfully updated!"
+      redirect_to gossip_path(@gossip), notice: "Gossip modifié !"
     else
       render :edit
     end

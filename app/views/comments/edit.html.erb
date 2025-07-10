@@ -1,0 +1,11 @@
+<h1>Modifier le commentaire</h1>
+
+<%= form_with(model: [@gossip, @comment], local: true) do |form| %>
+    <div class="mb-2">
+        <%= form.label :content, "Commentaire", class: 'form-label' %><br>
+        <%= form.text_area :content, class: 'content form-control' %>
+    </div>
+    <div>
+        <%= form.submit "Mettre à jour", class: 'btn btn-success' %>
+    </div>
+<% end %>

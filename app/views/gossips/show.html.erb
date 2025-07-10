@@ -4,16 +4,18 @@
     <% @comments.each do |comment| %>
         <div class="col">
             <div class="card">
-                <div class="card-body home-button">
-                    <h5><%= comment.content %></h5>
+                <div class="card-body home-button" style="flex-direction: column;">
+                    <h6><%= comment.content %></h6>
                     <p>Auteur : <%= comment.user.first_name %></p>
+                    <%= link_to 'Modifier ce commentaire', edit_gossip_comment_path(@gossip, comment), class: 'btn btn-primary two-button' %>
+                    <%= button_to "Supprimer", gossip_comment_path(@gossip, comment), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-secondary" %>
                 </div>
             </div>
         </div>
     <% end %>
     <%= form_tag(gossip_comments_path(@gossip)) do %>
         <div class="mb-2">
-            <%= label_tag(:content, "Commentaire", class: 'form-label') %><br>
+            <%= label_tag(:content, "Commentaire :", class: 'form-label') %><br>
             <%= text_area_tag(:content, nil,  placeholder: "Lâche du lourd !",class: 'content form-control') %>
         </div>
         <div>
