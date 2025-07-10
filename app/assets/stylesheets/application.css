@@ -7,6 +7,13 @@ h1 {
     padding: 2% 0;
 }
 
+h4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 5%;
+}
+
 form {
     margin-left: 1%;
     display: flex;
@@ -60,10 +67,3 @@ nav .container-fluid {
 .bg-light {
     --bs-light-rgb: 255, 150, 150;
 }
-
-/* .change.col {
-    --bs-gutter-y: 1.5rem;
-    margin-top: calc(0 * var(--bs-gutter-y));
-    margin-right: calc(1 * var(--bs-gutter-x));
-    margin-left: calc(2 * var(--bs-gutter-x));
-} */

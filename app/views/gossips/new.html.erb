@@ -2,12 +2,12 @@
 
 <%= form_tag(gossips_path) do %>
     <div class="mb-2">
-        <%= label_tag(:title, nil, class: 'form-label') %><br>
-        <%= text_field_tag(:title, nil, class: 'title form-control') %>
+        <%= label_tag(:title, "Titre du gossip", class: 'form-label') %><br>
+        <%= text_field_tag(:title, nil, placeholder: "Entre un titre (entre 3 et 14 caractères)", class: 'title form-control')%>
     </div>
     <div class="mb-2">
-        <%= label_tag(:content, nil, class: 'form-label') %><br>
-        <%= text_area_tag(:content, nil, class: 'content form-control') %>
+        <%= label_tag(:content, "Contenu", class: 'form-label') %><br>
+        <%= text_area_tag(:content, nil,  placeholder: "Balance la sauce !! Aller !",class: 'content form-control') %>
     </div>
     <div>
         <%= submit_tag("Créer mon Gossip", class: 'btn btn-danger') %>
