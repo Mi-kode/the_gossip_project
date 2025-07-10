@@ -1,3 +1,17 @@
-<h1><%= @city.name %></h1>
-<p>Potins de cette ville :</p>
-<p><%= @user.description %></p>
+<h1>Ville : <%= @city.name %></h1>
+
+<h3>Gossips qui viennet de cette ville :</h3>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <% @gossips.each do |gossip| %>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5><%= gossip.title %></h5>
+                    <p>Auteur : <%= gossip.user.first_name %></p>
+                    <%= link_to 'Voir ce potin', gossip_path(gossip), class: 'btn btn-danger' %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
