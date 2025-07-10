@@ -23,4 +23,13 @@ class GossipsController < ApplicationController
       render :new
     end
   end
+
+  def update
+    @model = Model.find(params[:id])
+    if @model.update(tes_params)
+      redirect_to @model
+    else
+      render :edit
+    end
+  end
 end
