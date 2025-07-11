@@ -10,11 +10,16 @@ Rails.application.routes.draw do
   # Landing page
   get "/welcome/:first_name", to: "static_pages#welcome"
 
+  # Login/logout
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
   # Gossips
   resources :gossips
 
   # Users
-  resources :users, only: [ :show ]
+  resources :users, only: [ :new, :create, :show ]
 
   # Cities
   resources :cities, only: [ :show ]

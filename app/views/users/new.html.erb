@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <h2>Créer un compte</h2>
+
+    <%= form_with model: @user, url: users_path, local: true do |form| %>
+        <div class="mb-3">
+        <%= form.label :first_name, "Prénom", class: 'form-label' %>
+        <%= form.text_field :first_name, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :last_name, "Nom", class: 'form-label' %>
+        <%= form.text_field :last_name, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :age, "Âge", class: 'form-label' %>
+        <%= form.number_field :age, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :city_id, "Ville", class: 'form-label' %>
+        <%= form.collection_select :city_id, City.all, :id, :name, { prompt: "Choisis ta ville" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :email, "Email", class: 'form-label' %>
+        <%= form.email_field :email, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :password, "Mot de passe", class: 'form-label' %>
+        <%= form.password_field :password, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :password_confirmation, "Confirmation du mot de passe", class: 'form-label' %>
+        <%= form.password_field :password_confirmation, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.submit "Créer mon compte", class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>

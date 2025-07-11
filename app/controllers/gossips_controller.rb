@@ -1,4 +1,12 @@
 class GossipsController < ApplicationController
+  before_action :require_login, only: [ :new, :create, :edit, :update, :destroy ]
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "Tu dois être connecté pour accéder à cette page"
+      redirect_to login_path
+    end
+  end
   def show
     @gossip = Gossip.find(params[:id])
     @comments = @gossip.comments
@@ -18,12 +26,8 @@ class GossipsController < ApplicationController
 
 
   def create
-    anonymous = User.find_by(first_name: "anonymous")
-    @gossip = Gossip.new(
-      title: params[:title],
-      content: params[:content],
-      user: anonymous
-    )
+    @gossip = Gossip.new(gossip_params)
+    @gossip.user = current_user
 
     if @gossip.save
       flash[:success] = "Gossip enregistré !"

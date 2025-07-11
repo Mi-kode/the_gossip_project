@@ -1,0 +1,58 @@
+✅ Ce qui est très bien dans ton plan :
+
+Controller dédié pour la connexion (logins_controller ou plutôt sessions_controller par convention Rails).
+
+Vue new.html.erb pour la page de login.
+
+Formulaire de création d’utilisateur avec les infos demandées (nom, prénom, age, ville, email, mot de passe).
+
+Redirection après login vers la home.
+
+Page de profil avec ses propres infos et ses potins.
+
+⚠ Quelques points à améliorer / préciser :
+
+1️⃣ Nom du controller :
+→ Rails suit la convention sessions_controller pour gérer la session (connexion / déconnexion).
+✅ users_controller pour tout ce qui est inscription et profil.
+
+2️⃣ Root path :
+
+    Tu peux mettre temporairement root 'sessions#new' (page de login) pour forcer les gens à se connecter d’abord.
+
+    Mais à terme, souvent le root_path est la home, et on met plutôt une vérification before_action :authenticate_user dans ApplicationController ou dans les controllers sensibles pour rediriger vers login si pas connecté.
+
+3️⃣ Après création d’un compte (signup) :
+Bonne idée de rediriger vers login, mais souvent on connecte automatiquement l’utilisateur après inscription (par ex. on fait session[:user_id] = @user.id après @user.save), pour lui éviter de taper ses identifiants juste après s’être inscrit.
+👉 C’est d’ailleurs demandé dans l’énoncé :
+
+"Aussi, à la création de l'utilisateur, il faut login l'utilisateur."
+
+4️⃣ Gestion des sessions :
+
+    Tu auras une action new (formulaire de login), une action create (qui vérifie email + mot de passe et met session[:user_id]), et une action destroy pour déconnexion (qui fait session.delete(:user_id)).
+
+5️⃣ Navbar dynamique :
+
+    Si current_user existe → bouton "Mon profil" + "Déconnexion"
+
+    Sinon → bouton "S’inscrire / Se connecter"
+
+6️⃣ Association user et potins / commentaires :
+
+    Quand tu crées un potin : @gossip = current_user.gossips.build(...) → le potin aura l’utilisateur comme auteur.
+
+    Idem pour les commentaires.
+
+7️⃣ Page de profil (users#show) :
+
+    Afficher ses infos + liste de ses potins (via @user.gossips).
+
+8️⃣ Sécurité et confort :
+
+    Ajouter has_secure_password dans le modèle User pour gérer le mot de passe de façon sécurisée (nécessite bcrypt).
+
+    Ajouter des before_action pour protéger les pages sensibles.
+
+✅ Tu n’as rien oublié d’important dans ta liste, c’est déjà complet.
+Tu peux aussi, en bonus, afficher le nombre de likes par potin et permettre de liker / déliker, mais c’est la suite du projet.

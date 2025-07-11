@@ -1,4 +1,12 @@
 class CommentsController < ApplicationController
+  before_action :require_login, only: [ :new, :create, :edit, :update, :destroy ]
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "Tu dois être connecté pour accéder à cette page"
+      redirect_to login_path
+    end
+  end
   def new
     @gossip = Gossip.find(params[:gossip_id])
     @comment = Comment.new
@@ -10,9 +18,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.find(params[:gossip_id])
-    anonymous = User.find_by(first_name: "anonymous")
-    @comment = @gossip.comments.build(content: params[:content], user: anonymous)
+    @comment = Gossip.new(comment_params)
+    @comment.user = current_user
+
     if @comment.save
       redirect_to gossip_path(@gossip), notice: "Commentaire ajouté !"
     else

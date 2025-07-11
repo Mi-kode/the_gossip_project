@@ -1,0 +1,15 @@
+<h1>Se connecter</h1>
+
+<%= form_tag(login_path) do %>
+    <div class="mb-2">
+        <%= label_tag(:email, "Email", class: 'form-label') %><br>
+        <%= text_field_tag(:email, nil, class: 'title form-control')%>
+    </div>
+    <div class="mb-2">
+        <%= label_tag(:password, "Mot de passe", class: 'form-label') %><br>
+        <%= password_field_tag(:password, nil, class: 'title form-control') %>
+    </div>
+    <div>
+        <%= submit_tag("Connexion", class: 'btn btn-secondary') %>
+    </div>
+<% end %>
