@@ -9,21 +9,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @users = User.new(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      age: params[:age],
-      city: params[:city],
-      email: params[:email],
-      password: params[:password]
-    )
+    @user = User.new(user_params)
 
-    if @users.save
+    if @user.save
       flash[:success] = "Votre compte a été créé avec succès !"
       redirect_to root_path
     else
       flash.now[:error] = "Oups... il y a eu une erreur !"
       render :new
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :age, :city_id, :email, :password, :password_confirmation)
   end
 end

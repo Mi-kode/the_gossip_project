@@ -10,6 +10,10 @@
         <%= password_field_tag(:password, nil, class: 'title form-control') %>
     </div>
     <div>
-        <%= submit_tag("Connexion", class: 'btn btn-secondary') %>
+        <%= submit_tag("Connexion", class: 'btn btn-primary') %>
+    </div><br>
+    <div>
+        <p>Pas encore inscrit ?</p>
+        <p><%= link_to "Créer un compte", new_user_path, class: "btn btn-secondary mt-2" %></p>
     </div>
 <% end %>

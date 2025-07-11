@@ -18,7 +18,10 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      flash[:error] = "Tu dois être connecté pour accéder à cette page"
+      if controller_name == "static_pages" && action_name == "home"
+      else
+        flash[:error] = "Tu dois être connecté pour accéder à cette page"
+      end
       redirect_to login_path
     end
   end

@@ -34,6 +34,7 @@
       <%= message %>
     </div>
   <% end %>
+  <% if controller_name == "static_pages" && action_name == "home" %>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -75,6 +76,15 @@
         </div>
       </nav>
     </header>
+    <% else %>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">The Gossip Project</a>
+          </div>
+        </nav>
+      </header>
+    <% end %>
     <%= yield %>
   </body>
 </html>
