@@ -1,5 +1,5 @@
 class GossipsController < ApplicationController
-  before_action :require_login, only: [ :new, :create, :edit, :update, :destroy ]
+  before_action :require_login, except: [ :index, :show ]
 
   def require_login
     unless logged_in?

@@ -1,13 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [ :new, :create ]
-
-  def require_login
-    unless logged_in?
-      flash[:error] = "Tu dois être connecté pour accéder à cette page"
-      redirect_to login_path
-    end
-  end
-
+  skip_before_action :require_login, only: [ :new, :create, :show ]
   def new
     @user = User.new
   end
