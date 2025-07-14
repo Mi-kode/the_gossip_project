@@ -18,13 +18,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Gossip.new(comment_params)
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = @gossip.comments.new(comment_params)
     @comment.user = current_user
 
     if @comment.save
       redirect_to gossip_path(@gossip), notice: "Commentaire ajouté !"
     else
-      render :new
+      @comments = @gossip.comments # Important pour réafficher la liste
+      render "gossips/show", status: :unprocessable_entity
     end
   end
 
