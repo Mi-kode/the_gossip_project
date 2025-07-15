@@ -1,18 +1,21 @@
 <h1>Nouveau Gossip</h1>
 
-<%= form_tag(gossips_path) do %>
+<%= form_with model: @gossip, local: true do |form| %>
     <div class="mb-2">
-        <%= label_tag(:title, "Titre du gossip", class: 'form-label') %><br>
-        <%= text_field_tag(:title, nil, placeholder: "Entre un titre (entre 3 et 14 caractères)", class: 'title form-control')%>
+        <%= form.label :title, "Titre du gossip", class: 'form-label' %><br>
+        <%= form.text_field :title, placeholder: "Entre un titre (entre 3 et 14 caractères)", class: 'title form-control' %>
     </div>
+
     <div class="mb-2">
-        <%= label_tag(:content, "Contenu", class: 'form-label') %><br>
-        <%= text_area_tag(:content, nil,  placeholder: "Balance la sauce !! Aller !",class: 'content form-control') %>
+        <%= form.label :content, "Contenu", class: 'form-label' %><br>
+        <%= form.text_area :content, placeholder: "Balance la sauce !! Aller !", class: 'content form-control' %>
     </div>
+
     <div>
-        <%= submit_tag("Créer mon Gossip", class: 'btn btn-danger') %>
+        <%= form.submit "Créer mon Gossip", class: 'btn btn-danger' %>
     </div>
 <% end %>
+
 
 <% if @gossip && @gossip.errors.any? %>
     <p>We couldn't create the gossip because:</p>
