@@ -7,8 +7,10 @@
                 <div class="card-body home-button" style="flex-direction: column;">
                     <h6><%= comment.content %></h6>
                     <p>Auteur : <%= comment.user.first_name %></p>
-                    <%= link_to 'Modifier ce commentaire', edit_gossip_comment_path(@gossip, comment), class: 'btn btn-primary two-button' %>
-                    <%= button_to "Supprimer", gossip_comment_path(@gossip, comment), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-secondary" %>
+                    <% if @gossip.user == current_user || comment.user == current_user %>
+                        <%= link_to 'Modifier ce commentaire', edit_gossip_comment_path(@gossip, comment), class: 'btn btn-primary two-button' %>
+                        <%= button_to "Supprimer", gossip_comment_path(@gossip, comment), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-secondary" %>
+                    <% end %>
                 </div>
             </div>
         </div>
@@ -25,5 +27,7 @@
     <p>De <%= @gossip.user.first_name %> (<%= link_to @gossip.user.city.name, city_path(@gossip.user.city) %>)</p>
     <p>Créé à : <%= @gossip.created_at.strftime("%d %B %Y") %></p>
     <p><%= link_to "En savoir plus sur l'auteur", user_path(@gossip.user), class: 'btn btn-danger' %></p>
-    <%= button_to "Supprimer ce potin", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-secondary delete-button" %>
+    <% if @gossip.user == current_user %>
+        <%= button_to "Supprimer ce potin", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-secondary delete-button" %>
+    <% end %>
 </div>

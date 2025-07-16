@@ -13,7 +13,9 @@
                     </div>
                     <div class="right-div">
                         <%= link_to 'Voir ce potin', gossip_path(gossip), class: 'btn btn-danger two-button' %>
-                        <%= link_to 'Modifier ce potin', edit_gossip_path(gossip), class: 'btn btn-primary two-button' %>
+                        <% if gossip.user == current_user %>
+                            <%= link_to 'Modifier ce potin', edit_gossip_path(gossip), class: 'btn btn-primary two-button' %>
+                        <% end %>
                     </div>
                 </div>
             </div>
