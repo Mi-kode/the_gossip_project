@@ -52,25 +52,12 @@
               <li class="nav-item">
                 <%= link_to 'Contact', contact_path, class: 'nav-link' %>
               </li>
-              <% if logged_in? %>
-                <li class="nav-item">
-                  <%= link_to 'Déconnexion', logout_path, method: :delete, data: { turbo: false, confirm: 'Êtes-vous sûr ?' }, class: 'nav-link' %>
-                </li>
-              <% else %>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                    Mon compte
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <%= link_to 'Se connecter', login_path, class: 'dropdown-item' %>
-                    </li>
-                    <li>
-                      <%= link_to "S'inscrire", new_user_path, class: 'dropdown-item' %>
-                    </li>
-                  </ul>
-                </li>
-              <% end %>
+              <li class="nav-item">
+                <%= link_to 'Déconnexion', logout_path, method: :delete, data: { turbo: false, confirm: 'Êtes-vous sûr ?' }, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to image_tag('compte.png'), user_path(current_user), class: 'nav-link' %>
+              </li>
             </ul>
           </div>
         </div>

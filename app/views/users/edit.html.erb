@@ -1,0 +1,27 @@
+<h1>Modifier vos informations</h1>
+
+    <%= form_with model: @user, local: true do |form| %>
+        <div class="mb-3">
+        <%= form.label :first_name, "Prénom", class: 'form-label' %>
+        <%= form.text_field :first_name, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :last_name, "Nom", class: 'form-label' %>
+        <%= form.text_field :last_name, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :age, "Âge", class: 'form-label' %>
+        <%= form.number_field :age, class: 'title form-control' %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.label :city_id, "Ville", class: 'form-label' %>
+        <%= form.collection_select :city_id, City.all, :id, :name, { prompt: "Choisis ta ville" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="mb-3">
+        <%= form.submit "Confirmer", class: 'btn btn-primary' %>
+        </div>
+    <% end %>

@@ -10,6 +10,7 @@
                     <div class="left-div">
                         <h5><%= gossip.title %></h5>
                         <p>Auteur : <%= gossip.user.first_name %></p>
+                        <p>Créé le : <%= gossip.created_at.strftime("%d %B %Y") %></p>
                     </div>
                     <div class="right-div">
                         <%= link_to 'Voir ce potin', gossip_path(gossip), class: 'btn btn-danger two-button' %>
