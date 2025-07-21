@@ -10,6 +10,12 @@
         <%= password_field_tag(:password, nil, class: 'title form-control') %>
     </div>
     <div>
+        <%= check_box_tag :remember_me, "1", false, class: 'form-check-input', id: 'checkDefault' %>
+        <label class="form-check-label" for="checkDefault">
+            Se souvenir de moi
+        </label>
+    </div><br>
+    <div>
         <%= submit_tag("Connexion", class: 'btn btn-primary') %>
     </div><br>
     <div>

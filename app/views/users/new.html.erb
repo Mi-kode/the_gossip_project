@@ -48,6 +48,13 @@
         <%= form.password_field :password_confirmation, class: 'title form-control' %>
         </div>
 
+        <div>
+            <%= check_box_tag :remember_me, "1", false, class: 'form-check-input', id: 'checkDefault' %>
+            <label class="form-check-label" for="checkDefault">
+                Se souvenir de moi
+            </label>
+        </div><br>
+
         <div class="mb-3">
         <%= form.submit "Créer mon compte", class: 'btn btn-primary' %>
         </div>

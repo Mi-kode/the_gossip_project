@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      log_in(@user)
       flash[:success] = "Votre compte a été créé avec succès !"
       redirect_to root_path
     else
@@ -31,6 +32,11 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    self.update(remember_digest: remember_digest)
   end
 
   private
